@@ -4,7 +4,7 @@
   "description": "A cursor library in typescript.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha dist/test/unit.test.js"
+    "test": "tsc && mocha dist/test/unit.test.js"
   },
   "author": "Nolan Hellyer",
   "license": "ISC",
@@ -14,8 +14,8 @@
     "@types/sinon": "^7.5.1",
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
-    "sinon": "^8.0.2"
+    "sinon": "^8.0.2",
+    "tslint": "^5.20.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
