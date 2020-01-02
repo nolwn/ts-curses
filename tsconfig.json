@@ -1,15 +1,13 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "lib": ["es6", "dom"],
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "strict": true,
-        "target": "es5",
-        "rootDirs": [
-            "/src"
-        ],
-        "sourceMap": true,
-        "outDir": "dist"
-    }
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"lib": ["es6", "dom"],
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"strict": true,
+		"target": "es5",
+		"rootDirs": ["/src"],
+		"sourceMap": true,
+		"outDir": "dist"
+	}
 }

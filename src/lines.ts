@@ -4,7 +4,7 @@
 //     private text: string;
 
 //     constructor() {
-        
+
 //     }
 
 //     print() {
