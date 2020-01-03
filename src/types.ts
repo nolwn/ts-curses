@@ -41,3 +41,5 @@ export interface ICursorSettings {
 }
 
 export type ColorSettings = [TextColor?, BackgroundColor?];
+
+export const Reset = "\u001b[0m";

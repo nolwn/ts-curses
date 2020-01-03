@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { BackgroundColor, ColorSettings, ICursorSettings, TextColor } from "./types";
+import { BackgroundColor, ColorSettings, ICursorSettings, Reset, TextColor } from "./types";
 
 export class Part {
 	private settings: ICursorSettings;
@@ -21,7 +21,12 @@ export class Part {
 	public print(lineSettings: ICursorSettings): string {
 		const settings = { ...lineSettings, ...this.settings };
 		const prefix = _.values(settings.color).join("");
-		const suffix = _.values(lineSettings.color).join("");
+		let suffix;
+		if (lineSettings.color.length) {
+			suffix = _.values(lineSettings.color).join("");
+		} else {
+			suffix = Reset;
+		}
 
 		return `${prefix}${this.text}${suffix}`;
 	}

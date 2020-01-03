@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { Part } from "../part";
-import { BackgroundColor, TextColor } from "../types";
+import { BackgroundColor, TextColor, ColorSettings, Reset } from "../types";
 
 describe("Colors", () => {
 	it("should change text color", () => {
@@ -8,42 +8,41 @@ describe("Colors", () => {
 		const textPart = new Part(text);
 
 		textPart.setTextColor(TextColor.Blue);
-		expect(textPart.print({ color: [TextColor.White] })).to.equal(
-			`${TextColor.Blue}${text}${TextColor.White}`
-		);
+
+		let textPrint = textPart.print({ color: [] });
+		let expectedOutput = `${TextColor.Blue}${text}${Reset}`;
+
+		expect(textPrint).to.equal(expectedOutput);
 
 		textPart.setTextColor(TextColor.Red);
-		expect(textPart.print({ color: [TextColor.White] })).to.equal(
-			`${TextColor.Red}${text}${TextColor.White}`
-		);
+
+		textPrint = textPart.print({ color: [] });
+		expectedOutput = `${TextColor.Red}${text}${Reset}`;
+
+		expect(textPart.print({ color: [] })).to.equal(expectedOutput);
 	});
 
 	it("should change background color", () => {
 		const text = "This text has a background.";
-		const backgroundPart = new Part(text);
+		const textPart = new Part(text);
 
-		backgroundPart.setBackgroundColor(BackgroundColor.Blue);
-		expect(
-			backgroundPart.print({
-				color: [, BackgroundColor.Black]
-			})
-		).to.equal(`${BackgroundColor.Blue}${text}${BackgroundColor.Black}`);
+		textPart.setBackgroundColor(BackgroundColor.Blue);
+		let textPrint = textPart.print({ color: [] });
+		let expectedOutput = `${BackgroundColor.Blue}${text}${Reset}`;
 
-		backgroundPart.setBackgroundColor(BackgroundColor.BrightMagenta);
-		expect(
-			backgroundPart.print({
-				color: [, BackgroundColor.Black]
-			})
-		).to.equal(`${BackgroundColor.BrightMagenta}${text}${BackgroundColor.Black}`);
+		expect(textPrint).to.equal(expectedOutput);
 
-		backgroundPart.setBackgroundColor(BackgroundColor.Cyan);
-		backgroundPart.setTextColor(TextColor.Yellow);
-		expect(
-			backgroundPart.print({
-				color: [TextColor.White, BackgroundColor.Black]
-			})
-		).to.equal(
-			`${TextColor.Yellow}${BackgroundColor.Cyan}${text}${TextColor.White}${BackgroundColor.Black}`
-		);
+		textPart.setBackgroundColor(BackgroundColor.BrightMagenta);
+		textPrint = textPart.print({ color: [] });
+		expectedOutput = `${BackgroundColor.BrightMagenta}${text}${Reset}`;
+
+		expect(textPrint).to.equal(expectedOutput);
+
+		textPart.setBackgroundColor(BackgroundColor.Cyan);
+		textPart.setTextColor(TextColor.Yellow);
+		textPrint = textPart.print({ color: [] });
+		expectedOutput = `${TextColor.Yellow}${BackgroundColor.Cyan}${text}${Reset}`;
+
+		expect(textPrint).to.equal(expectedOutput);
 	});
 });
